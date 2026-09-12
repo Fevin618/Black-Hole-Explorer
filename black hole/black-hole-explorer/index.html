@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="An interactive and scientifically grounded web application to explore basic black hole physics.">
+    <title>Black Hole Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Mono&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="container">
+            <h1>Black Hole Explorer</h1>
+            <p class="subtitle">An educational tool for exploring black hole physics and characteristics.</p>
+        </div>
+    </header>
+
+    <main class="container main-grid">
+        <!-- Calculator Section -->
+        <section class="card calculator-section" id="calculator">
+            <h2>Black Hole Calculator</h2>
+            <p class="section-desc">Enter the mass of a black hole to calculate its physical properties based on General
+                Relativity.</p>
+
+            <div class="input-group">
+                <label for="massInput">Mass (in Solar Masses, M<sub>☉</sub>):</label>
+                <input type="number" id="massInput" value="1" min="0.000001" step="any">
+            </div>
+
+            <div class="results-grid">
+                <div class="result-box">
+                    <h3>Mass (kg)</h3>
+                    <p id="res-mass">1.989 × 10<sup>30</sup></p>
+                </div>
+                <div class="result-box">
+                    <h3>Schwarzschild Radius (r<sub>s</sub>)</h3>
+                    <p id="res-radius" class="highlight">2.95 km</p>
+                    <small>r<sub>s</sub> = 2GM / c²</small>
+                </div>
+                <div class="result-box">
+                    <h3>Event Horizon Diameter</h3>
+                    <p id="res-diameter">5.91 km</p>
+                </div>
+                <div class="result-box">
+                    <h3>Surface Gravity (approx.)</h3>
+                    <p id="res-gravity">1.52 × 10<sup>12</sup> m/s²</p>
+                    <small>At the event horizon (Newtonian approx.)</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visualization Section -->
+        <section class="card visual-section">
+            <h2>Black Hole Visualization</h2>
+            <p class="section-desc">A conceptual visualization of a black hole with event horizon and accretion disk.
+            </p>
+
+            <div class="video-container">
+                <video id="bhVideo" width="100%" height="auto" controls poster="assets/videos/thumbnail.jpg"
+                    aria-label="Black hole visualization video">
+                    <source src="assets/videos/blackhole.mp4" type="video/mp4">
+                    <source src="assets/videos/blackhole.webm" type="video/webm">
+                    Your browser doesn't support HTML5 video.
+                    <a href="assets/videos/blackhole.mp4">Download the video</a> instead.
+                </video>
+            </div>
+
+            <p class="disclaimer">
+                <em>Note: This is an educational illustrative visualization, not a complete general-relativistic
+                    simulation.</em>
+            </p>
+        </section>
+
+        <!-- Black Hole Types -->
+        <section class="card types-section">
+            <h2>Black Hole Categories</h2>
+            <p class="section-desc">Terminology can vary in astronomy, but black holes are broadly categorized by their
+                mass.</p>
+            <div class="type-cards">
+                <div class="type-card" onclick="setMass(10)">
+                    <h3>Stellar-mass</h3>
+                    <p>Mass: ~3 to 100 M<sub>☉</sub></p>
+                    <p class="small">Formed by the gravitational collapse of a massive star at the end of its life.</p>
+                    <button class="btn-try">Load Example (10 M<sub>☉</sub>)</button>
+                </div>
+                <div class="type-card" onclick="setMass(1000)">
+                    <h3>Intermediate-mass</h3>
+                    <p>Mass: 10<sup>2</sup> to 10<sup>5</sup> M<sub>☉</sub></p>
+                    <p class="small">Rarely observed, likely formed by the collision of smaller black holes.</p>
+                    <button class="btn-try">Load Example (1000 M<sub>☉</sub>)</button>
+                </div>
+                <div class="type-card" onclick="setMass(4000000)">
+                    <h3>Supermassive</h3>
+                    <p>Mass: 10<sup>5</sup> to 10<sup>10</sup> M<sub>☉</sub></p>
+                    <p class="small">Found at the center of almost all large galaxies (e.g., Sagittarius A*).</p>
+                    <button class="btn-try">Load Sgr A* (4×10<sup>6</sup> M<sub>☉</sub>)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Object Comparison -->
+        <section class="card comparison-section">
+            <h2>Object Comparison</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Object</th>
+                            <th>Mass (kg)</th>
+                            <th>Radius (km)</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Earth</td>
+                            <td>5.97 × 10<sup>24</sup></td>
+                            <td>6,371</td>
+                            <td>Planet</td>
+                        </tr>
+                        <tr>
+                            <td>Sun</td>
+                            <td>1.99 × 10<sup>30</sup></td>
+                            <td>696,340</td>
+                            <td>Star</td>
+                        </tr>
+                        <tr>
+                            <td>Typical Stellar BH</td>
+                            <td>1.99 × 10<sup>31</sup></td>
+                            <td>~29.5</td>
+                            <td>Black Hole</td>
+                        </tr>
+                        <tr>
+                            <td>Sagittarius A* (SMBH)</td>
+                            <td>~8 × 10<sup>36</sup></td>
+                            <td>~1.2 × 10<sup>7</sup></td>
+                            <td>Supermassive BH</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Time Dilation Section -->
+        <section class="card dilation-section">
+            <h2>Gravitational Time Dilation</h2>
+            <p>According to General Relativity, time passes slower closer to a massive object compared to a distant
+                observer. This is known as gravitational time dilation.</p>
+            <div class="content-box">
+                <p><strong>Proper Time:</strong> The time measured by a clock moving with the observer.</p>
+                <p><strong>Coordinate Time:</strong> The time measured by an observer infinitely far away from the
+                    gravitational field.</p>
+                <div class="example-box">
+                    <h4>Educational Example:</h4>
+                    <p>If an observer were to safely hover at a distance of 1.5 times the Schwarzschild radius from the
+                        center of a non-rotating black hole, for every 1 hour that passes for them (proper time),
+                        roughly 1.73 hours would pass for a distant observer (coordinate time).</p>
+                    <p class="small"><em>Note: This is a simplified example based on Schwarzschild spacetime.
+                            Calculating exactly what an observer experiences depends entirely on their trajectory and
+                            the specific spacetime geometry (e.g., whether the black hole is rotating).</em></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Physics -->
+        <section class="card education-section">
+            <h2>Physics Concepts</h2>
+            <dl class="glossary">
+                <dt>Event Horizon</dt>
+                <dd>The boundary around a black hole beyond which nothing, not even light, can escape. It is not a
+                    physical surface, but a threshold in spacetime.</dd>
+
+                <dt>Singularity</dt>
+                <dd>The center of a black hole where matter is thought to be crushed to infinite density. Current
+                    physics (General Relativity) cannot fully describe this point; a theory of quantum gravity is
+                    needed.</dd>
+
+                <dt>Schwarzschild Radius</dt>
+                <dd>The radius of the event horizon for a non-rotating black hole. It is directly proportional to the
+                    mass of the black hole.</dd>
+
+                <dt>Accretion Disk</dt>
+                <dd>A structure formed by diffused material in orbital motion around a central body. Friction causes the
+                    disk to heat up and emit light and x-rays.</dd>
+
+                <dt>Gravitational Lensing</dt>
+                <dd>The bending of light caused by the intense gravitational field of a massive object, warping the
+                    visual appearance of background objects.</dd>
+
+                <dt>Spaghettification (Tidal Forces)</dt>
+                <dd>The extreme stretching of an object caused by the immense difference in gravitational pull across
+                    its length as it approaches a black hole.</dd>
+
+                <dt>Hawking Radiation</dt>
+                <dd>Theoretical thermal radiation predicted to be released by black holes due to quantum effects near
+                    the event horizon.</dd>
+            </dl>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Built for educational purposes. 🌌</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

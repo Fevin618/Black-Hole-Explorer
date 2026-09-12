@@ -1,0 +1,555 @@
+:root {
+    --bg-color: #0505085f;
+    --card-bg: #1111188c;
+    --card-border: #222230;
+    --text-main: #e0e0e0;
+    --text-muted: #888899;
+    --accent-blue: #360252;
+    --accent-orange: #471065;
+    --highlight-bg: rgba(46, 4, 69, 0.87);
+
+    --font-sans: 'Inter', sans-serif;
+    --font-mono: 'Space Mono', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    background-image: radial-gradient(circle at top center, #101018 0%, #050508 100%);
+    background-attachment: fixed;
+    background-image: linear-gradient(115deg, rgba(5, 10, 18, 0.627), rgba(24, 2, 9, 0.408) 52%, rgba(54, 2, 63, 0.605)), url("assets/wallpaperflare.com_wallpaper.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-orange));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.section-desc {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+small,
+.small {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* Header & Footer */
+.app-header {
+    padding: 3rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--card-border);
+    background: rgba(5, 5, 8, 0.8);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    border-top: 1px solid var(--card-border);
+    color: var(--text-muted);
+}
+
+/* Layout */
+.main-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+    padding-top: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Grid areas */
+.calculator-section {
+    grid-column: span 6;
+}
+
+.visual-section {
+    grid-column: span 6;
+    display: flex;
+    flex-direction: column;
+}
+
+.types-section {
+    grid-column: span 12;
+}
+
+.comparison-section {
+    grid-column: span 12;
+}
+
+.dilation-section {
+    grid-column: span 6;
+}
+
+.education-section {
+    grid-column: span 6;
+}
+
+/* Calculator */
+.input-group {
+    margin-bottom: 2rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    background-color: #1a1a24;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    color: var(--text-main);
+    font-size: 1.2rem;
+    font-family: var(--font-mono);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-blue);
+}
+
+.results-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.result-box {
+    background-color: #1a1a24;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+}
+
+.result-box p {
+    font-size: 1.25rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.result-box p.highlight {
+    color: var(--accent-orange);
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   VIDEO CONTAINER STYLES (NEW)
+   ============================================ */
+
+.video-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+    min-height: 300px;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Video Controls Styling */
+.video-container {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+    min-height: 300px;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+}
+
+/* Canvas (Legacy - kept for compatibility) */
+.canvas-container {
+    background-color: #0000000b;  /* near-fully-transparent black (alpha ≈ 4%) */
+    
+}
+canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   VISUALIZATION CONTROLS (For toggle option)
+   ============================================ */
+
+.viz-controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.viz-toggle {
+    padding: 10px 20px;
+    background-color: #1a1a24;
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.viz-toggle:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.viz-toggle.active {
+    background-color: var(--accent-blue);
+    color: #00000009;
+    border-color: var(--accent-blue);
+}
+
+.visualization-content {
+    display: none;
+}
+
+.visualization-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ============================================
+   YOUTUBE EMBED (Responsive)
+   ============================================ */
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.15);
+    margin-bottom: 1rem;
+    border: 1px solid var(--card-border);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* Disclaimer */
+.disclaimer {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 1rem;
+    padding: 12px;
+    background-color: rgba(255, 106, 0, 0.05);
+    border-left: 3px solid var(--accent-orange);
+    border-radius: 4px;
+}
+
+/* Black Hole Types */
+.type-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.type-card {
+    background-color: #1a1a24;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.type-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 210, 255, 0.1);
+}
+
+.type-card h3 {
+    color: var(--text-main);
+}
+
+.type-card p {
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.btn-try {
+    background: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    transition: all 0.2s ease;
+    margin-top: auto;
+}
+
+.type-card:hover .btn-try {
+    background: var(--accent-blue);
+    color: #000;
+}
+
+/* Table */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--card-border);
+}
+
+th {
+    background-color: #1a1a24;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+td {
+    font-family: var(--font-mono);
+}
+
+td:first-child,
+td:last-child {
+    font-family: var(--font-sans);
+}
+
+/* Glossary & Content boxes */
+.content-box,
+.example-box {
+    background-color: #1a1a24;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.content-box p {
+    margin-bottom: 0.5rem;
+}
+
+.example-box {
+    background-color: var(--highlight-bg);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+}
+
+.example-box h4 {
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+.glossary {
+    display: grid;
+    gap: 16px;
+}
+
+.glossary dt {
+    font-weight: 600;
+    color: var(--accent-blue);
+    margin-bottom: 4px;
+}
+
+.glossary dd {
+    color: var(--text-muted);
+    padding-left: 16px;
+    border-left: 2px solid var(--card-border);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+
+    .calculator-section,
+    .visual-section,
+    .dilation-section,
+    .education-section {
+        grid-column: span 12;
+    }
+
+    .type-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .viz-controls {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 12px;
+    }
+
+    .app-header {
+        padding: 2rem 0;
+    }
+
+    .main-grid {
+        gap: 12px;
+        padding-top: 1rem;
+    }
+
+    .card {
+        padding: 16px;
+        border-radius: 8px;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    .video-container,
+    .canvas-container {
+        min-height: 0;
+    }
+
+    .video-container {
+        aspect-ratio: 16 / 9;
+    }
+
+    .type-cards {
+        grid-template-columns: 1fr;
+    }
+
+    th,
+    td {
+        padding: 10px 12px;
+        white-space: nowrap;
+    }
+}
